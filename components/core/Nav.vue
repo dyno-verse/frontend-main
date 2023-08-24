@@ -2,7 +2,7 @@
   <div class="w-full py-5 px-5 mt-2">
     <div class="flex justify-between">
       <div class="flex flex-row gap-x-5 items-center">
-        <img src="~/assets/imgs/logo.svg" class="w-14" alt="Dynomenu logo"/>
+        <img src="/imgs/logo.svg" class="w-14" alt="Dynomenu logo"/>
         <h6 class="font-bold text-pink">What's dyno menu?</h6>
         <p>Pricing</p>
       </div>
