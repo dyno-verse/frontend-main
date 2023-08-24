@@ -9,8 +9,13 @@ module.exports = {
         "./app.vue",
     ],
     theme: {
+        colors: {
+            pink: '#E51755',
+            white:'#FFFFFF'
+        },
         extend: {},
     },
     plugins: [],
 }
 
+// background: #E51755;
