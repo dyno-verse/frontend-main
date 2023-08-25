@@ -13,7 +13,7 @@ body {
 }
 
 .dark body {
-  background-color: #080D1A;
+  background-color: #12141A;
   color: #ebf4f1;
 }
 
