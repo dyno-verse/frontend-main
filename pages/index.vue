@@ -13,7 +13,7 @@
             <p>
               Restaurants, hotels, pubs, coffee <br/>shops and eating establishments
             </p>
-            <LeadTitle label="We help you create a digital version of your menu." size="9"/>
+            <LeadTitle label="We help you create a digital version of your menu." :size="9"/>
             <Button :label="'Get Started'" :type="ButtonTypes.Primary"/>
           </div>
           <div class="w-1/2 text-left md:visible 2xl:visible xl:visible sm:invisible invisible py-10">
@@ -30,7 +30,7 @@
           <div class="w-11/12 md:w-1/3 py-10 self-center" v-for="i in features">
             <div class="flex flex-row justify-center text-center">
               <div class="mx-3 p-2 h-10 rounded-full">
-                <img :src="i.icon" class="w-20" alt="Dynomenu logo"/>
+                <img :src="i.icon" class="w-28" alt="Dynomenu logo"/>
               </div>
               <div class="text-left">
                 <h5 class="font-bold text-3xl md:text-2xl xl:text-3xl 2xl:text-3xl">{{ i.name }}</h5>
@@ -60,7 +60,7 @@
             </div>
 
             <!--Cards-->
-            <div class="flex flex-col md:flex-row md:flex-wrap justify-center my-5">
+            <div class="flex flex-col md:flex-row space-x-0 md:space-x-10 justify-center my-5">
               <MarketingCard class="w-full my-5 md:w-1/2 xl:w-1/3 2xl:w-1/3" v-for="(x,i) in gettingStartedSteps"
                              :step="i+1" :action="x.action"></MarketingCard>
             </div>
@@ -105,8 +105,8 @@
 
 
       <SectionWrapper>
-        <div class="flex flex-col md:flex-row justify-left mx-5 my-10">
-          <div class="w-full text-left md:w-1/2 flex justify-center my-10">
+        <div class="flex flex-col md:flex-row justify-left mx-5 mt-10">
+          <div class="w-full text-left md:w-1/2 xl:w-1/2 2xl:w-1/2 flex justify-center my-10">
             <div class="mt-32">
               <h3 class="text-6xl font-bold">Create your</h3>
               <h3 class="text-6xl font-bold text-red-500">digital menu</h3>
@@ -116,14 +116,14 @@
             </div>
           </div>
 
-          <div class="w-full md:w-1/2 text-left flex justify-center">
+          <div class="w-full md:w-1/2 xl:w-1/2 2xl:w-1/2 text-left flex justify-center">
             <img src="/imgs/hand-illustration.svg" class="w-4/5"/>
           </div>
 
         </div>
       </SectionWrapper>
 
-      <!--      <Footer></Footer>-->
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -152,7 +152,7 @@ const features = [
 
   },
   {
-    name: "Always accessible & fast",
+    name: "Always accessible",
     subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
     color: 'bg-green-100',
     icon: '/imgs/cloud.svg'
