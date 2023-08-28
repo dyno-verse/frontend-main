@@ -1,0 +1,1 @@
+import{S as e,H as a}from"./SectionWrapper.599098f9.js";import{f as r,j as t,w as o,o as n,b as p}from"./entry.c454d073.js";import"./nuxt-link.2bb43dcf.js";const l=r({__name:"pricing",setup(s){return(c,i)=>(n(),t(e,null,{default:o(()=>[p(a)]),_:1}))}});export{l as default};
