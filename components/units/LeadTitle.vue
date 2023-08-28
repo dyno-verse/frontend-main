@@ -26,9 +26,6 @@ const props = withDefaults(defineProps<LeadTitleProps>(), {
   size: 9
 })
 
-
-console.log(props.size)
-
 </script>
 
 <style scoped>

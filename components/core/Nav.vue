@@ -13,10 +13,6 @@
           <p>EN <i class="fa-solid fa-caret-down"></i></p>
           <Button label="Log In" :type="ButtonTypes.Secondary"/>
         </div>
-        <div class="flex flex-row items-center space-x-2 invisible">
-          <p class="text-2xl font-light">EN</p>
-<!--          <img src="/imgs/menu.svg" class="w-20 stroke-red-200 fill-red-200" alt="Dynomenu logo"/>-->
-        </div>
       </div>
     </div>
   </div>
