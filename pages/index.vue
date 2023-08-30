@@ -13,7 +13,7 @@
             <p>
               Restaurants, hotels, pubs, coffee <br/>shops and eating establishments
             </p>
-            <LeadTitle label="We help you create a digital version of your menu." :size="9"/>
+            <LeadTitle label="We help you create a digital version of your menu." :size="6"/>
             <Button :label="'Get Started'" :type="ButtonTypes.Primary"/>
           </div>
           <div class="w-1/2 text-left md:visible 2xl:visible xl:visible sm:invisible invisible py-10">

@@ -1,11 +1,18 @@
+import {resolve} from "node:path"
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
 // @ts-ignore
 export default defineNuxtConfig({
     app: {
         baseURL: '/web-frontend/',
         // baseURL: '',
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1',
+        },
         buildAssetsDir: 'assets',
-        pageTransition: { name: 'page', mode: 'out-in' }
+        pageTransition: {name: 'page', mode: 'out-in'}
     },
     devtools: {enabled: true},
     modules: [

@@ -1,6 +1,11 @@
 <template>
   <div v-if="props.type === ButtonTypes.Primary">
-    <button :class="buttonStyles">{{ props.label }}</button>
+    <button :class="buttonStyles">
+      <div class="flex flex-row space-x-2">
+        <p>{{ props.label }}</p>
+        <img src="imgs/ic-arrow.svg">
+      </div>
+    </button>
   </div>
   <div v-else-if="props.type === ButtonTypes.Secondary">
     <button :class="buttonStyles">{{ props.label }}</button>
@@ -24,7 +29,7 @@ interface ButtonProps {
 const buttonStyles = computed(() => {
   switch (props.type) {
     case ButtonTypes.Primary:
-      return 'bg-red-500 px-10 text-white font-bold py-4 rounded-full';
+      return 'bg-red-500 px-10 text-white font-bold  py-6 rounded-full';
     case ButtonTypes.Secondary:
       return 'border-red-500 border px-10 font-bold text-red-500 py-4 rounded-full';
   }
