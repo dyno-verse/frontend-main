@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "frontend-main",
+      "script": "./.output/server/index.mjs",
+      "exec_mode": "cluster",
+      "instances": 2
+    }
+  ]
+}

@@ -3,7 +3,7 @@
     <button :class="buttonStyles">
       <div class="flex flex-row space-x-2">
         <p>{{ props.label }}</p>
-        <img src="imgs/ic-arrow.svg">
+<!--        <img src="imgs/ic-arrow.svg">-->
       </div>
     </button>
   </div>
