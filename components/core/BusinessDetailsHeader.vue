@@ -3,7 +3,7 @@
     <div id="backdrop"
          class="w-full h-40 rounded-b-3xl z-20">
       <object
-          class="w-full bg-black h-40"
+          class="w-full bg-black h-40 bg-blend-color-burn"
           style="border-radius: 0 0 3.5rem 3.5rem; height:10rem;"
           :data="backdropImage"></object>
     </div>

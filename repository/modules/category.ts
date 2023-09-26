@@ -1,11 +1,11 @@
 import HttpFactory from "~/repository/factory";
-import {IBusinessInfo} from "~/repository/models/ApiResponse";
+import {IBusinessInfo, IMenu, IMenuCategory} from "~/repository/models/ApiResponse";
 
 class MenuCategoryModule extends HttpFactory {
     private RESOURCE = '/business/';
 
-    async getBusinessInfoBySlug(slug: string): Promise<IBusinessInfo> {
-        return await this.call<IBusinessInfo>('GET', `${this.RESOURCE}/${slug}`)
+    async getMenuCategoriesByBusinessId(id: string) {
+        return await this.call<IMenuCategory>('GET', `${this.RESOURCE}/${id}`)
     }
 }
 
