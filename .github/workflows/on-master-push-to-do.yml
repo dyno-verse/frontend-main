@@ -16,8 +16,7 @@ jobs:
           node-version: '18.x'
           check-latest: true
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-      - run: npm ci
+      - run: npm i
       - run: npm run build
       - name: SSH into DO Droplet
         uses: appleboy/ssh-action@master
