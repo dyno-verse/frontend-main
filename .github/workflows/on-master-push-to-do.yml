@@ -13,8 +13,10 @@ jobs:
       - name: Build
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: '18.x'
           check-latest: true
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
       - run: npm ci
       - run: npm run build
       - name: SSH into DO Droplet
