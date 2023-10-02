@@ -27,3 +27,5 @@ jobs:
           key: ${{secrets.KEY}}
           script: |
             echo "Initial Testing"
+            pwd
+            ls -a
