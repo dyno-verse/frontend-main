@@ -10,12 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           check-latest: true
-          cache-dependency-path: 'frontend-main/package-lock.json'
+          cache-dependency-path: 'package-lock.json'
       - run: pwd && ls -a
       - run: npm ci
       - run: npm run build
