@@ -34,5 +34,6 @@ jobs:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
           key: ${{secrets.KEY}}
-          source: '.output/public/*'
+          source: '.output/*'
           target: "apps/frontend-main"
+          strip_components: 1
