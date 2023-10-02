@@ -16,7 +16,7 @@ jobs:
           node-version: '18.x'
           check-latest: true
           cache-dependency-path: 'frontend-main/package-lock.json'
-      - run: ls
+      - run: pwd && ls -a
       - run: npm ci
       - run: npm run build
       - name: SSH into DO Droplet
