@@ -15,8 +15,7 @@ jobs:
         with:
           node-version: '18.x'
           check-latest: true
-          cache: 'npm'
-      - run: npm i
+      - run: npm ci
       - run: npm run build
       - name: SSH into DO Droplet
         uses: appleboy/ssh-action@master
