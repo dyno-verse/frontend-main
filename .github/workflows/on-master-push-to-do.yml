@@ -18,13 +18,21 @@ jobs:
           cache-dependency-path: 'package-lock.json'
       - run: npm ci
       - run: npm run generate
-      - name: SSH into DO Droplet
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
           key: ${{secrets.KEY}}
           script: |
-            echo "Initial Testing"
-            pwd
-            ls -a
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            echo "Remove existing files"
+            rm -rf apps/frontend-main
+            mkdir apps/frontend-main
+      - uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.KEY}}
+          source: 'dist/*'
+          target: "apps/frontend-main"
