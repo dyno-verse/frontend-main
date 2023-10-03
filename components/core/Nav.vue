@@ -5,8 +5,10 @@
       <div class="flex flex-row items-center space-x-5">
         <NuxtLink to="/"><img src="/imgs/logo.svg" class="w-14" alt="Dynomenu logo"/></NuxtLink>
         <NuxtLink to="/" active-class="font-bold text-red-500">What's dyno
-          menu?</NuxtLink>
-        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Pricing</NuxtLink>
+          menu?
+        </NuxtLink>
+        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Features</NuxtLink>
+        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Try It</NuxtLink>
       </div>
       <div class="flex justify-end flex-row">
         <div
