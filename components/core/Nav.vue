@@ -7,31 +7,19 @@
         <NuxtLink to="/" active-class="font-bold text-red-500">What's dyno
           menu?
         </NuxtLink>
-        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Features</NuxtLink>
-        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Try It</NuxtLink>
+        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Products</NuxtLink>
+        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Pricing</NuxtLink>
+        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Solutions</NuxtLink>
       </div>
       <div class="flex justify-end flex-row">
         <div
             class="flex flex-row gap-x-5 items-center md:visible 2xl:visible xl:visible md:visible sm:invisible invisible">
-          <p>EN <i class="fa-solid fa-caret-down"></i></p>
+          <!--          <p>EN <i class="fa-solid fa-caret-down"></i></p>-->
           <Button label="Log In" :type="ButtonTypes.Secondary"/>
         </div>
       </div>
     </div>
 
-    <!--Mobile-->
-    <div class="flex md:hidden 2xl:hidden xl:hidden sm:visible justify-between items-center">
-      <div class="flex flex-row items-center space-x-5">
-        <NuxtLink to="/"><img src="/imgs/logo.svg" class="w-14" alt="Dynomenu logo"/></NuxtLink>
-      </div>
-      <div class="flex justify-end flex-row">
-        <div
-            class="flex flex-row gap-x-5 items-center">
-          <p>EN <i class="fa-solid fa-caret-down"></i></p>
-          <img src="/imgs/menu.svg">
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 

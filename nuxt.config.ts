@@ -5,8 +5,8 @@ import {resolve} from "node:path"
 // @ts-ignore
 export default defineNuxtConfig({
     app: {
-        baseURL: '/web-frontend/',
-        // baseURL: '',
+        // baseURL: '/web-frontend/',
+        baseURL: '',
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
@@ -17,8 +17,14 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
         '@nuxtjs/tailwindcss',
-        '@nuxtjs/color-mode'
+        '@nuxtjs/color-mode',
+        'nuxt-snackbar'
     ],
+    snackbar: {
+        bottom: true,
+        right: true,
+        duration: 5000
+    },
     css: ['~/assets/css/main.css'],
     postcss: {
         plugins: {
