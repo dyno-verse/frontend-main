@@ -8,18 +8,20 @@
 
       <!--Hero Section-->
       <SectionWrapper>
-        <div class="flex flex-row justify-center my-10 mx-5">
+        <div class="flex flex-row justify-center my-10 mx-7">
           <div class="2xl:w-1/2 md:w-1/2 sm:w-5/6  text-left">
+            <LeadTitle label="Designed with restaurants in focus.
+            " :size="6" class="md:mt-36 lg:mt-10 mt-16 2xl:mt-28"/>
             <p>
-              Restaurants, hotels, pubs, coffee <br/>shops and eating establishments
+              Easy to grasp quickly and even simpler to operate, Dynomenu platform prioritizes restaurants like yours.
             </p>
-            <LeadTitle label="We help you create a digital version of your menu." :size="6"/>
             <NuxtLink to="book-a-demo">
-              <Button :label="'Book a demo'" :type="ButtonTypes.Primary"/>
+              <Button :label="'Book a demo'" :type="ButtonTypes.Primary"
+                      class="w-full lg:w-2/3 xl:w-1/2 2xl:w-1/3 md:w-2/3 mt-5"/>
             </NuxtLink>
           </div>
           <div class="w-1/2 text-left md:visible 2xl:visible xl:visible sm:invisible invisible py-10">
-            <img src="/imgs/hero-phone.svg" class="w-xl">
+            <img src="../assets/imgs/hero.svg" class="w-xl">
           </div>
         </div>
       </SectionWrapper>

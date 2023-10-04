@@ -17,8 +17,14 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
         '@nuxtjs/tailwindcss',
-        '@nuxtjs/color-mode'
+        '@nuxtjs/color-mode',
+        'nuxt-snackbar'
     ],
+    snackbar: {
+        bottom: true,
+        right: true,
+        duration: 5000
+    },
     css: ['~/assets/css/main.css'],
     postcss: {
         plugins: {
