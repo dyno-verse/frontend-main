@@ -5,8 +5,8 @@ import {resolve} from "node:path"
 // @ts-ignore
 export default defineNuxtConfig({
     app: {
-        // baseURL: '/web-frontend/',
-        baseURL: '',
+        baseURL: '/web-frontend/',
+        // baseURL: '',
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
