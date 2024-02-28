@@ -32,7 +32,7 @@ export interface BusinessDetailsProps {
 
 const props = withDefaults(defineProps<BusinessDetailsProps>(), {
   businessLogo: '/imgs/la_comida.png',
-  name: 'La Comida',
+  name: 'A Restaurant',
   description: '  Your favorite food on every corner.',
   contact: '',
   backdropImage: '',

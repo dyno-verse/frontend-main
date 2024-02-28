@@ -23,7 +23,7 @@
           <hr class="my-10 text-neutral-100 dark:text-black"/>
           <div class="text-neutral-300 text-center self-center flex flex-col md:flex-row w-full md:mx-5 xl:mx-5">
             <small class="text-neutral-300">
-              © 2022 Dyno Menu. All Rights Reserved.
+              © 2024 Dyno Menu. All Rights Reserved.
             </small>
           </div>
         </div>
