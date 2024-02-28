@@ -5,7 +5,7 @@ class BusinessModule extends HttpFactory {
     private RESOURCE = 'business';
 
     async getBusinessInfoBySlug(slug: string): Promise<IBusinessInfo> {
-        return await this.call<IBusinessInfo>('GET', `${this.RESOURCE}/${slug}`)
+        return await this.call<IBusinessInfo>('GET', `${this.RESOURCE}/slug/${slug}`)
     }
 }
 

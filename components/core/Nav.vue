@@ -7,9 +7,9 @@
         <NuxtLink to="/" active-class="font-bold text-red-500">What's dyno
           menu?
         </NuxtLink>
-        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Products</NuxtLink>
+        <NuxtLink to="/products" active-class="text-red-500 font-bold">Products</NuxtLink>
         <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Pricing</NuxtLink>
-        <NuxtLink to="/pricing" active-class="text-red-500 font-bold">Solutions</NuxtLink>
+        <NuxtLink to="/solutions" active-class="text-red-500 font-bold">Solutions</NuxtLink>
       </div>
       <div class="flex justify-end flex-row">
         <div
