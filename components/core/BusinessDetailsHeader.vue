@@ -4,16 +4,16 @@
          class="w-full h-40 rounded-b-3xl z-20">
       <object
           class="w-full bg-black h-40 bg-blend-color-burn rounded-b-lg"
-          style="border-radius: 0 0 3.5rem 3.5rem; height:10rem;"
+          style="border-radius: 0 0 3rem 3rem; height:12rem; object-fit: cover;"
           :data="backdropImage"></object>
     </div>
 
-    <img :src="props.businessLogo" class="w-1/5 z-30 -mt-10 rounded-full border-4 border-white"/>
-    <h3 class="font-bold text-2xl">{{ props.name }}</h3>
-    <p class="text-neutral-300">
-      {{ props.description }}
-    </p>
+    <img :src="props.businessLogo" class="w-1/5 z-30 -mt-3 rounded-full border-4 border-white"/>
+    <h3 class="font-bold text-3xl">{{ props.name }}</h3>
     <p>{{ props.location }}</p>
+    <p class="text-gray-500 text-sm">
+      {{ props.contact }}
+    </p>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export interface BusinessDetailsProps {
   description?: string
   contact?: string,
   location?: string
-
+  themeColor: string
   backdropImage?: string
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <SectionWrapper class="pb-10 h-screen bg-gray-50">
+  <SectionWrapper class="pb-10" :style="{'backgroundColor': businessInfo.primaryColor}">
 
 
     <div v-if="hasError" class="h-screen">
@@ -8,12 +8,14 @@
     </div>
     <div v-else>
       <Loader v-if="isPending" class="py-80"/>
-      <div v-else>
+      <div v-else class="pb-5">
         <BusinessDetailsHeader :name="businessInfo.name"
                                :business-logo="businessInfo.logoUrl"
                                :description="businessInfo.tag"
                                :backdrop-image="businessInfo.bannerUrl"
                                :location="businessInfo.address"
+                               :contact="businessInfo.phoneNumber"
+                               :theme-color="businessInfo.primaryColor"
         ></BusinessDetailsHeader>
 
         <!-- menus-->
@@ -24,7 +26,8 @@
         <div class="">
           <h1 class="mx-5 mt-4 mb-2 "></h1>
           <StickyBadge :title="menuTitle" v-if="menuTitle.length !== 0" @click="goBack()"/>
-          <CardStripAction v-for="item in items.items" :title="item.name"></CardStripAction>
+          <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
+                           :img-url="item.imageUrl"/>
 
           <!--    Categories-->
           <div v-for="category in categories" class="">
