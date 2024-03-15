@@ -1,10 +1,10 @@
 <template>
   <!--Card Strip-->
-  <div class="flex flex-col mx-5 py-5 px-5 bg-white rounded-2xl mb-5 drop-shadow-md">
+  <div class="flex flex-col mx-5 py-5 px-5 bg-white rounded-2xl mb-5 border border-gray-300">
     <div class="flex flex-row items-center justify-between">
       <div>
         <h3 class="font-bold text-lg">{{ props.title }}</h3>
-        <p>{{ props.description }}</p>
+        <!--        <p>{{ props.description }}</p>-->
       </div>
 
       <img src="/imgs/ic-arrow-black.svg">

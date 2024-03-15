@@ -1,5 +1,5 @@
 <template>
-  <SectionWrapper class="bg-neutral-100 pb-10">
+  <SectionWrapper class="pb-10 h-screen bg-gray-50">
 
 
     <div v-if="hasError" class="h-screen">
@@ -10,9 +10,9 @@
       <Loader v-if="isPending" class="py-80"/>
       <div v-else>
         <BusinessDetailsHeader :name="businessInfo.name"
-                               :business-logo="businessInfo.logo"
+                               :business-logo="businessInfo.logoUrl"
                                :description="businessInfo.tag"
-                               :backdrop-image="businessInfo.banner"
+                               :backdrop-image="businessInfo.bannerUrl"
                                :location="businessInfo.address"
         ></BusinessDetailsHeader>
 
@@ -28,8 +28,9 @@
 
           <!--    Categories-->
           <div v-for="category in categories" class="">
-            <h1 class="mx-5 mt-4 mb-2 text-xl">{{ category.name }}</h1>
-            <CardStripAction v-for="item in category.items" :title="item.name"/>
+            <h1 v-if="category.items.length !== 0" class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
+            <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
+                             :img-url="item.imageUrl"/>
           </div>
         </div>
 
@@ -85,8 +86,10 @@ const getMenus = (menuId: string) => {
   $api.menu.getMenuItems(menuId).then(data => {
     items.value = data.data;
     menuTitle.value = items.value.name;
-    console.log(items.value.name)
     categories.value = data.data.categories;
+
+    console.log(categories.value)
+
 
     isLoadingMenus.value = false
 
@@ -101,6 +104,7 @@ const getBusinessInfo = () => {
     businessInfo.value = data.data;
     menus.value = businessInfo.value.branches[0].menu;
     setTitle(businessInfo.value.name);
+
     isPending.value = false
   }).catch(error => {
     console.log(error.data)
