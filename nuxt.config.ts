@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         right: true,
         duration: 5000
     },
-    css: ['~/assets/css/main.css'],
+    // css: ['~/assets/css/main.css'],
     postcss: {
         plugins: {
             tailwindcss: {},
