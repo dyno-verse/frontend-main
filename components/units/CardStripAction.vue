@@ -11,7 +11,7 @@
       <div class="flex flex-col px-4 pt-4">
         <div class="flex flex-row justify-between">
           <h3 class="font-bold text-lg w-2/3">{{ props.title }}</h3>
-          <p class="font-medium flex-auto text-end w-1/3">GHS {{ props.amount }}</p>
+          <p class="font-medium flex-auto text-end w-1/3">{{ props.amount }}</p>
         </div>
         <p class="text-gray-600">{{ props.description }}</p>
       </div>
@@ -37,7 +37,7 @@ export interface CardStripActionProps {
   title?: string
   imgUrl?: string
   description?: string
-  amount?: number,
+  amount?: string,
   currency?: string
 }
 
