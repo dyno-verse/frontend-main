@@ -46,7 +46,7 @@
             </div>
 
 
-            <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
+            <CardStripAction v-for="item in items.items" :title="item.name" :amount="format('GHc', item.price)"
                              :img-url="item.imageUrl" @add-to-cart="addToCart(item)"/>
 
             <!--    Categories-->
@@ -54,7 +54,7 @@
             <span :id="toKebabCase(category.name)" v-if="category.items.length !== 0" class="mt-20">
               <h1 class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
             </span>
-              <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
+              <CardStripAction v-for="item in category.items" :title="item.name" :amount="format('GHc', item.price)"
                                :img-url="item.imageUrl" @add-to-cart="addToCart(item)"/>
             </div>
             <div v-if="categories.length === 0">
@@ -76,7 +76,7 @@
       <div
           class="fixed bottom-0 left-0 right-0  bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
         <div class="flex flex-col  justify-start">
-          <h3 class="text-2xl font-bold m-0 p-0">GHS {{ getCartTotal() }}</h3>
+          <h3 class="text-2xl font-bold m-0 p-0">{{ format('GHC',getCartTotal())  }}</h3>
           <small class="text-gray-400">{{ getItemsCount() }} items</small>
         </div>
 
@@ -128,7 +128,7 @@
               </div>
             </div>
             <div>
-              <h3 class="font-bold">GHS {{ cartItem.price * cartItem.quantity }}</h3>
+              <h3 class="font-bold">GHS {{ format('GHc', (cartItem.price * cartItem.quantity)) }}</h3>
             </div>
           </div>
 
@@ -152,6 +152,9 @@
 </template>
 
 <script lang="ts" setup>
+import {format} from 'money-formatter';
+
+
 import SectionWrapper from "~/components/base/SectionWrapper.vue";
 import CardStrip from "~/components/units/CardStrip.vue";
 import BusinessDetailsHeader from "~/components/core/BusinessDetailsHeader.vue";
