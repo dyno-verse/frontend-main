@@ -99,7 +99,7 @@
 
       <div class="">
         <div v-for="(cartItem, index) in cartItems" class="flex flex-col justify-start w-full  py-3">
-          <h4>{{ cartItem.name }}</h4>
+          <h4 class="font-medium">{{ cartItem.name }}</h4>
 
           <div class="flex flex-row justify-between items-center">
             <div>
@@ -128,13 +128,24 @@
               </div>
             </div>
             <div>
-              <h3>GHS {{ cartItem.price * cartItem.quantity }}</h3>
+              <h3 class="font-bold">GHS {{ cartItem.price * cartItem.quantity }}</h3>
             </div>
           </div>
 
         </div>
       </div>
 
+      <div class="">
+        <div
+            class="absolute bottom-0 left-0 right-0 p-5 bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
+          <button type="button"
+                  @click="createOrder()"
+                  class="text-white bg-green-500 font-medium rounded-lg text-sm px-5 py-3 w-full">
+            Order Now
+          </button>
+
+        </div>
+      </div>
     </div>
 
   </SectionWrapper>
@@ -144,7 +155,7 @@
 import SectionWrapper from "~/components/base/SectionWrapper.vue";
 import CardStrip from "~/components/units/CardStrip.vue";
 import BusinessDetailsHeader from "~/components/core/BusinessDetailsHeader.vue";
-import {IBusinessInfo, IItem} from "~/repository/models/ApiResponse";
+import {IBusinessInfo, IItem, IOrders, OrderItem, IOrder} from "~/repository/models/ApiResponse";
 import {useRoute} from "vue-router";
 import CardStripAction from "~/components/units/CardStripAction.vue";
 import Loader from "~/components/units/Loader.vue";
@@ -157,9 +168,11 @@ const isPending = ref(true);
 const hasError = ref(false);
 const isLoadingMenus = ref(false);
 const menuTitle = ref("")
-const businessId = ref("")
+const businessSlug = ref("")
 const menus = ref([])
 const items = ref([])
+const branchId = ref('')
+const businessId = ref('')
 const cartItems = ref([])
 const categories = ref([])
 const drawer = ref({})
@@ -208,12 +221,15 @@ const getMenus = (menuId: string) => {
   })
 }
 const getBusinessInfo = () => {
-  businessId.value = route.params.id.toString()
+  businessSlug.value = route.params.id.toString()
   isPending.value = true
-  $api.business.getBusinessInfoBySlug(businessId.value).then(data => {
+  $api.business.getBusinessInfoBySlug(businessSlug.value).then(data => {
     businessInfo.value = data.data;
     menus.value = businessInfo.value.branches[0].menu;
     setTitle(businessInfo.value.name);
+
+    businessId.value = businessInfo.value.branches[0].businessId
+    branchId.value = businessInfo.value.branches[0].id
 
     isPending.value = false
   }).catch(error => {
@@ -222,6 +238,35 @@ const getBusinessInfo = () => {
     isPending.value = false
   })
 
+}
+
+const transformOrderItems = (cartItem: []): OrderItem[] => {
+  const orderItems: OrderItem[] = []
+  cartItems.value.forEach(item => {
+    orderItems.push({
+      itemId: item.id,
+      quantity: item.quantity
+    })
+  })
+  return orderItems
+}
+
+const createOrder = () => {
+
+  const data: IOrder = {
+    kitchenNote: '',
+    orderItems: transformOrderItems(cartItems.value),
+    branchId: branchId.value,
+    businessId: businessId.value,
+    tableNumber: 1
+  }
+
+  $api.order.createOrder(data).then(data => {
+    drawer.value.hide()
+    cartItems.value.length = 0
+    // router.push(`/pos/orders/payment/${data.data.id}`)
+  }).catch(error => {
+  })
 }
 
 
