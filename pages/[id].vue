@@ -17,55 +17,84 @@
                                :theme-color="businessInfo.primaryColor"
         ></BusinessDetailsHeader>
 
-        <!-- menus-->
-        <CardStrip v-if="!isPending" v-for="menu in menus" @click="onClick(menu.id)"
-                   :title="menu.name"></CardStrip>
+        <div v-if="setScreen === Screens.MENU">
+          <!-- menus-->
+          <CardStrip v-if="!isPending" v-for="menu in menus" @click="onMenuSelected(menu.id)"
+                     :title="menu.name"></CardStrip>
+        </div>
+        <div v-if="setScreen === Screens.ITEMS">
 
-        <Loader v-if="isLoadingMenus"/>
-        <div class="">
+          <Loader v-if="isLoadingMenus"/>
+          <div class="" v-else>
 
-          <div class="flex flex-row sticky bg-white mb-10 top-0 left-0 right-0 items-center"
-               v-if="categories.length !== 0">
-            <div class="pl-4 pr-2" @click="goBack()">
-              <svg class="w-6 h-6 text-gray-800 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                   width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M5 12h14M5 12l4-4m-4 4 4 4"/>
-              </svg>
-            </div>
-            <div
-                class="py-5 bg-white z-50 px-5 overflow-x-scroll flex overflow-x-auto space-x-8">
+            <div class="flex flex-row sticky bg-white mb-10 top-0 left-0 right-0 items-center"
+                 v-if="categories.length !== 0">
+              <div class="pl-4 pr-2" @click="goBack()">
+                <svg class="w-6 h-6 text-gray-800 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                     width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                </svg>
+              </div>
+              <div
+                  class="py-5 bg-white z-50 px-5 overflow-x-scroll flex overflow-x-auto space-x-8">
               <span v-for="category in categories" class="flex-shrink-0">
                 <a v-if="category.items.length !== 0" :href="`#${toKebabCase(category.name)}`"
                    class="p-3">{{ category.name }}</a>
               </span>
+              </div>
             </div>
-          </div>
 
 
-          <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
-                           :img-url="item.imageUrl"/>
+            <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
+                             :img-url="item.imageUrl"/>
 
-          <!--    Categories-->
-          <div v-for="category in categories" class="" v-if="categories.length !== 0">
+            <!--    Categories-->
+            <div v-for="category in categories" class="" v-if="categories.length !== 0">
             <span :id="toKebabCase(category.name)" v-if="category.items.length !== 0" class="mt-20">
               <h1 class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
             </span>
-            <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
-                             :img-url="item.imageUrl"/>
-          </div>
-          <div v-if="menus.length === 0 && categories.length === 0">
-            <div class="flex flex-col h-auto items-center space-y-2">
-              <p class="text-lg text-gray-500">No items found</p>
-              <button @click="goBack()" type="button"
-                      class="focus:outline-none text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                Go back
-              </button>
+              <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
+                               :img-url="item.imageUrl"/>
+            </div>
+            <div v-if="categories.length === 0">
+              <div class="flex flex-col h-auto items-center space-y-2">
+                <p class="text-lg text-gray-500">No items found</p>
+                <button @click="goBack()" type="button"
+                        class="focus:outline-none text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                  Go back
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
+    </div>
+
+    <div class="relative">
+      <div
+          class="fixed bottom-0 left-0 right-0  bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
+        <div class="flex flex-col  justify-start">
+          <h3 class="text-2xl font-bold m-0 p-0">GHS 200.00</h3>
+          <small class="text-gray-400">13 items</small>
+        </div>
+
+        <button type="button"
+                data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example"
+                class="focus:outline-none text-white bg-red-400 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+          View Order
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- drawer component -->
+    <div id="drawer-example"
+         class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+         tabindex="-1" aria-labelledby="drawer-label">
+
     </div>
 
   </SectionWrapper>
@@ -90,7 +119,14 @@ const menuTitle = ref("");
 const businessId = ref("");
 const menus = ref([]);
 const items = ref([]);
-const categories = ref([]);
+const categories = ref([])
+
+enum Screens {
+  MENU,
+  ITEMS
+}
+
+const setScreen = ref(Screens.MENU)
 
 const route = useRoute();
 
@@ -99,17 +135,14 @@ const setTitle = (businessName: string) => {
   useHead({title: businessName.concat(" | DynoMenu")})
 }
 
-const onClick = (id: string) => {
-  menus.value = [];
+const onMenuSelected = (id: string) => {
+  setScreen.value = Screens.ITEMS
   getMenus(id)
 }
 
+
 const goBack = () => {
-  menus.value = [];
-  items.value = [];
-  categories.value = [];
-  menuTitle.value = "";
-  getBusinessInfo()
+  setScreen.value = Screens.MENU
 }
 
 function toKebabCase(sentence: string): string {
