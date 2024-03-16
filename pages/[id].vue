@@ -24,14 +24,32 @@
 
         <Loader v-if="isLoadingMenus"/>
         <div class="">
-          <h1 class="mx-5 mt-4 mb-2 "></h1>
-          <StickyBadge :title="menuTitle" v-if="menuTitle.length !== 0" @click="goBack()"/>
+
+          <div class="flex flex-row sticky bg-white mb-10 top-0 left-0 right-0 items-center"
+               v-if="categories.length !== 0">
+            <div class="pl-4 pr-2" @click="goBack()">
+              <svg class="w-6 h-6 text-gray-800 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                   width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+              </svg>
+            </div>
+            <div
+                class="py-5 bg-white z-50 px-5 overflow-x-scroll flex overflow-x-auto space-x-8">
+              <span v-for="category in categories" class="flex-shrink-0">
+                <a :href="`#${toKebabCase(category.name)}`">{{ category.name }}</a>
+              </span>
+            </div>
+          </div>
+
+
           <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
                            :img-url="item.imageUrl"/>
 
           <!--    Categories-->
           <div v-for="category in categories" class="">
-            <h1 v-if="category.items.length !== 0" class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
+            <h1 :id="toKebabCase(category.name)" v-if="category.items.length !== 0"
+                class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
             <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
                              :img-url="item.imageUrl"/>
           </div>
@@ -50,7 +68,6 @@ import BusinessDetailsHeader from "~/components/core/BusinessDetailsHeader.vue";
 import {IBusinessInfo} from "~/repository/models/ApiResponse";
 import {useRoute} from "vue-router";
 import CardStripAction from "~/components/units/CardStripAction.vue";
-import StickyBadge from "~/components/units/StickyBadge.vue";
 import Loader from "~/components/units/Loader.vue";
 
 const {$api} = useNuxtApp();
@@ -83,6 +100,11 @@ const goBack = () => {
   menuTitle.value = "";
   getBusinessInfo()
 }
+
+function toKebabCase(sentence: string): string {
+  return sentence.toLowerCase().replace(/\s+/g, '-');
+}
+
 
 const getMenus = (menuId: string) => {
   isLoadingMenus.value = true
