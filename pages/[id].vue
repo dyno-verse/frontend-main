@@ -47,12 +47,21 @@
                            :img-url="item.imageUrl"/>
 
           <!--    Categories-->
-          <div v-for="category in categories" class="">
+          <div v-for="category in categories" class="" v-if="categories.length !== 0">
             <span :id="toKebabCase(category.name)" v-if="category.items.length !== 0" class="mt-20">
               <h1 class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
             </span>
             <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
                              :img-url="item.imageUrl"/>
+          </div>
+          <div v-if="menus.length === 0 && categories.length === 0">
+            <div class="flex flex-col h-auto items-center space-y-2">
+              <p class="text-lg text-gray-500">No items found</p>
+              <button @click="goBack()" type="button"
+                      class="focus:outline-none text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                Go back
+              </button>
+            </div>
           </div>
         </div>
 
@@ -114,9 +123,6 @@ const getMenus = (menuId: string) => {
     items.value = data.data;
     menuTitle.value = items.value.name;
     categories.value = data.data.categories;
-
-    console.log(categories.value)
-
 
     isLoadingMenus.value = false
 
