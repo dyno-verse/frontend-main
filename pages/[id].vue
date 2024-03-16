@@ -47,7 +47,7 @@
 
 
             <CardStripAction v-for="item in items.items" :title="item.name" :amount="item.price"
-                             :img-url="item.imageUrl"/>
+                             :img-url="item.imageUrl" @add-to-cart="addToCart(item)"/>
 
             <!--    Categories-->
             <div v-for="category in categories" class="" v-if="categories.length !== 0">
@@ -55,13 +55,13 @@
               <h1 class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
             </span>
               <CardStripAction v-for="item in category.items" :title="item.name" :amount="item.price"
-                               :img-url="item.imageUrl"/>
+                               :img-url="item.imageUrl" @add-to-cart="addToCart(item)"/>
             </div>
             <div v-if="categories.length === 0">
               <div class="flex flex-col h-auto items-center space-y-2">
                 <p class="text-lg text-gray-500">No items found</p>
                 <button @click="goBack()" type="button"
-                        class="focus:outline-none text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                        class="text-white bg-red-500  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
                   Go back
                 </button>
               </div>
@@ -72,17 +72,18 @@
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative" v-if="getItemsCount() !== 0">
       <div
           class="fixed bottom-0 left-0 right-0  bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
         <div class="flex flex-col  justify-start">
-          <h3 class="text-2xl font-bold m-0 p-0">GHS 200.00</h3>
-          <small class="text-gray-400">13 items</small>
+          <h3 class="text-2xl font-bold m-0 p-0">GHS {{ getCartTotal() }}</h3>
+          <small class="text-gray-400">{{ getItemsCount() }} items</small>
         </div>
 
         <button type="button"
+                @click="openCart()"
                 data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example"
-                class="focus:outline-none text-white bg-red-400 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                class="text-white bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
           View Order
         </button>
 
@@ -92,8 +93,47 @@
 
     <!-- drawer component -->
     <div id="drawer-example"
+         ref="drawerId"
          class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
          tabindex="-1" aria-labelledby="drawer-label">
+
+      <div class="">
+        <div v-for="(cartItem, index) in cartItems" class="flex flex-col justify-start w-full  py-3">
+          <h4>{{ cartItem.name }}</h4>
+
+          <div class="flex flex-row justify-between items-center">
+            <div>
+              <div class="flex-row flex space-x-2 py-2 items-center">
+                <button type="button"
+                        @click="itemQuantityDecrease(index)"
+                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
+                  <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                       xmlns="http://www.w3.org/2000/svg"
+                       width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 12h14"/>
+                  </svg>
+                </button>
+                <p class="text-gray-400">{{ cartItem.quantity }}</p>
+                <button type="button"
+                        @click="itemQuantityIncrease(index)"
+                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
+                  <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                       xmlns="http://www.w3.org/2000/svg"
+                       width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 12h14m-7 7V5"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div>
+              <h3>GHS {{ cartItem.price * cartItem.quantity }}</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     </div>
 
@@ -104,22 +144,26 @@
 import SectionWrapper from "~/components/base/SectionWrapper.vue";
 import CardStrip from "~/components/units/CardStrip.vue";
 import BusinessDetailsHeader from "~/components/core/BusinessDetailsHeader.vue";
-import {IBusinessInfo} from "~/repository/models/ApiResponse";
+import {IBusinessInfo, IItem} from "~/repository/models/ApiResponse";
 import {useRoute} from "vue-router";
 import CardStripAction from "~/components/units/CardStripAction.vue";
 import Loader from "~/components/units/Loader.vue";
 import EmptyState from "~/components/units/EmptyState.vue";
+import {Drawer, DrawerOptions} from "flowbite";
 
 const {$api} = useNuxtApp();
 const businessInfo = ref({} as IBusinessInfo)
 const isPending = ref(true);
 const hasError = ref(false);
 const isLoadingMenus = ref(false);
-const menuTitle = ref("");
-const businessId = ref("");
-const menus = ref([]);
-const items = ref([]);
+const menuTitle = ref("")
+const businessId = ref("")
+const menus = ref([])
+const items = ref([])
+const cartItems = ref([])
 const categories = ref([])
+const drawer = ref({})
+const drawerId = ref(null)
 
 enum Screens {
   MENU,
@@ -179,6 +223,85 @@ const getBusinessInfo = () => {
   })
 
 }
+
+
+const addToCart = (item: IItem) => {
+  const pos = returnItemPosition(item)
+  if (pos < 0) {
+    //Separate this
+    item.quantity = 1
+    cartItems.value.push(item)
+  } else {
+    itemQuantityIncrease(pos)
+  }
+
+  console.log(cartItems.value)
+}
+
+// const
+const getCartTotal = () => {
+  let sum: number = 0;
+  cartItems.value.forEach(a => sum += (a.price * a.quantity));
+  return sum
+}
+
+const getItemsCount = () => {
+  return cartItems.value.length;
+}
+
+function returnItemPosition(item: IItem): number {
+  return cartItems.value.findIndex(a => a.id === item.id)
+}
+
+const itemQuantityIncrease = (itemPosition: number) => {
+  const theItem = (cartItems.value[itemPosition] as IItem)
+  if (theItem.quantity !== undefined) {
+    theItem.quantity++
+    cartItems.value.splice(itemPosition, 1, theItem)
+  }
+
+}
+
+const itemQuantityDecrease = (itemPosition: number) => {
+  const theItem = (cartItems.value[itemPosition] as IItem)
+  if (theItem.quantity !== undefined) {
+    theItem.quantity--
+    if (theItem.quantity <= 0) {
+      deleteCartItem(itemPosition)
+    } else {
+      cartItems.value.splice(itemPosition, 1, theItem)
+    }
+  }
+}
+
+const deleteCartItem = (position: number) => {
+  cartItems.value.splice(position, 1)
+}
+
+const openCart = () => {
+  const options: DrawerOptions = {
+    placement: 'right',
+    backdrop: true,
+    bodyScrolling: false,
+    edge: true,
+    backdropClasses:
+        'bg-gray-900/50 fixed inset-0 z-30',
+    onHide: () => {
+      console.log('drawer is hidden');
+    },
+    onShow: () => {
+      console.log('drawer is shown');
+    },
+    onToggle: () => {
+      console.log('drawer has been toggled');
+    },
+  };
+
+  drawer.value = new Drawer(drawerId.value, options)
+  drawer.value.show()
+}
+
+
 onMounted(() => {
   getBusinessInfo()
 });

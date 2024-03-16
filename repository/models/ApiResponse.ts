@@ -53,7 +53,7 @@ export interface IMenuDetail {
     branchId: string;
     createdAt: string;
     updatedAt: string;
-    items: Item[];
+    items: IItem[];
     categories: Category[];
 }
 
@@ -78,12 +78,13 @@ interface Item2 {
     updatedAt: string;
 }
 
-interface Item {
+export interface IItem {
     id: string;
     name: string;
     description: string;
+    color?: string;
     price: number;
+    quantity?: number;
+    imageUrl?: string;
     ingredients: string[];
-    createdAt: string;
-    updatedAt: string;
 }
