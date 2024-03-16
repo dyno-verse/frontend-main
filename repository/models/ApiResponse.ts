@@ -88,3 +88,38 @@ export interface IItem {
     imageUrl?: string;
     ingredients: string[];
 }
+
+export interface IOrders {
+    id: string
+    branchId: string
+    businessId: string
+    orderItems: OrderItem[]
+    paymentType: any
+    paymentStatus: string
+    kitchenStatus: string
+    orderNumber: number
+    kitchenNote: string
+    tableNumber: number
+    subTotal: number
+    feeItems: any[]
+    total: number
+}
+
+export interface OrderItem {
+    item: IItem
+    quantity: number
+    total: number
+}
+
+export interface IOrder {
+    businessId: string
+    branchId: string
+    kitchenNote: string
+    tableNumber: number
+    orderItems: IOrderItems[]
+}
+
+interface IOrderItems {
+    itemId: string
+    quantity: number
+}
