@@ -27,7 +27,7 @@
           <Loader v-if="isLoadingMenus"/>
           <div class="" v-else>
 
-            <div class="flex flex-row sticky  mb-10 top-0 left-0 right-0 items-center"
+            <div class="flex flex-row sticky  mb-10 top-0 left-0 right-0 items-center drop-shadow-md"
                  v-if="categories.length !== 0" :style="{'backgroundColor': businessInfo.primaryColor}">
               <div class="pl-4 pr-2" @click="goBack()">
                 <svg class="w-6 h-6 text-gray-800 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
               <span v-for="category in categories" class="flex-shrink-0"
                     :style="{'backgroundColor': businessInfo.primaryColor}">
                 <a v-if="category.items.length !== 0" :href="`#${toKebabCase(category.name)}`"
-                   class="p-3">{{ category.name }}</a>
+                   class="p-3 font-bold">{{ category.name }}</a>
               </span>
               </div>
             </div>
@@ -53,7 +53,7 @@
             <!--    Categories-->
             <div v-for="category in categories" class="" v-if="categories.length !== 0">
             <span :id="toKebabCase(category.name)" v-if="category.items.length !== 0" class="mt-20">
-              <h1 class="mx-5 mt-4 mb-2 text-xl font-medium">{{ category.name }}</h1>
+              <h1 class="mx-5 mt-4 mb-2 font-bold">{{ category.name }}</h1>
             </span>
               <CardStripAction v-for="item in category.items" :title="item.name" :amount="format('GHc', item.price)"
                                :img-url="item.imageUrl" @add-to-cart="addToCart(item)"/>
@@ -75,7 +75,7 @@
 
     <div class="relative" v-if="getItemsCount() !== 0">
       <div
-          class="fixed bottom-0 left-0 right-0  bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
+          class="fixed bottom-0 left-0 right-0 drop-shadow-lg bg-white border-t border-gray-200 px-5 py-2 flex flex-row justify-between items-center">
         <div class="flex flex-col  justify-start">
           <h3 class="text-2xl font-bold m-0 p-0">{{ format('GHC', getCartTotal()) }}</h3>
           <small class="text-gray-400">{{ getItemsCount() }} items</small>
@@ -84,7 +84,7 @@
         <button type="button"
                 @click="openCart()"
                 data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example"
-                class="text-white bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+                class="text-white bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5">
           View Order
         </button>
 
@@ -104,10 +104,10 @@
 
           <div class="flex flex-row justify-between items-center">
             <div>
-              <div class="flex-row flex space-x-2 py-2 items-center">
+              <div class="flex-row flex space-x-3 py-2 items-center">
                 <button type="button"
                         @click="itemQuantityDecrease(index)"
-                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
+                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center">
                   <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
                 <p class="text-gray-400">{{ cartItem.quantity }}</p>
                 <button type="button"
                         @click="itemQuantityIncrease(index)"
-                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
+                        class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center">
                   <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24" height="24" fill="none" viewBox="0 0 24 24">

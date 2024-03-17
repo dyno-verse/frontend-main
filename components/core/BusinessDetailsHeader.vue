@@ -8,7 +8,9 @@
           :data="backdropImage"></object>
     </div>
 
-    <img :src="props.businessLogo" class="w-1/5 z-30 -mt-3 rounded-full border-4 border-white"/>
+    <object :data="props.businessLogo" class="w-1/5 z-30 -mt-3 rounded-full border border-white drop-shadow-lg w-36 h-36"
+            style="height:6rem; width:6rem; object-fit: contain; padding: 0.2rem;"/>
+
     <h3 class="font-bold text-3xl">{{ props.name }}</h3>
     <p>{{ props.location }}</p>
     <p class="text-gray-500 text-sm">
