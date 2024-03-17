@@ -44,7 +44,7 @@ export interface CardStripActionProps {
 const props = withDefaults(defineProps<CardStripActionProps>(), {
   title: 'Lasagna',
   imgUrl: '/imgs/la_comida.png',
-  description: 'Something sweet must be eaten',
+  description: '',
   amount: 40.0,
   currency: 'GHS '
 })

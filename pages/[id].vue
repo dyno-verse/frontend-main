@@ -27,8 +27,8 @@
           <Loader v-if="isLoadingMenus"/>
           <div class="" v-else>
 
-            <div class="flex flex-row sticky bg-white mb-10 top-0 left-0 right-0 items-center"
-                 v-if="categories.length !== 0">
+            <div class="flex flex-row sticky  mb-10 top-0 left-0 right-0 items-center"
+                 v-if="categories.length !== 0" :style="{'backgroundColor': businessInfo.primaryColor}">
               <div class="pl-4 pr-2" @click="goBack()">
                 <svg class="w-6 h-6 text-gray-800 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                      width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -37,8 +37,9 @@
                 </svg>
               </div>
               <div
-                  class="py-5 bg-white z-50 px-5 overflow-x-scroll flex overflow-x-auto space-x-8">
-              <span v-for="category in categories" class="flex-shrink-0">
+                  class="py-5 z-50 px-5 overflow-x-scroll flex overflow-x-auto space-x-8">
+              <span v-for="category in categories" class="flex-shrink-0"
+                    :style="{'backgroundColor': businessInfo.primaryColor}">
                 <a v-if="category.items.length !== 0" :href="`#${toKebabCase(category.name)}`"
                    class="p-3">{{ category.name }}</a>
               </span>
@@ -76,7 +77,7 @@
       <div
           class="fixed bottom-0 left-0 right-0  bg-white border-t border-gray-200 p-3 flex flex-row justify-between items-center">
         <div class="flex flex-col  justify-start">
-          <h3 class="text-2xl font-bold m-0 p-0">{{ format('GHC',getCartTotal())  }}</h3>
+          <h3 class="text-2xl font-bold m-0 p-0">{{ format('GHC', getCartTotal()) }}</h3>
           <small class="text-gray-400">{{ getItemsCount() }} items</small>
         </div>
 
