@@ -1,17 +1,19 @@
 <template>
   <!--Card Strip-->
-  <div class="flex flex-col mx-5 bg-white rounded-2xl mb-5 border border-gray-300">
+  <div class="flex flex-col mx-5 bg-white rounded-lg mb-5 border border-gray-300">
     <div class="flex flex-col">
       <!--      <img :src="props.imgUrl" class="w-full h-20">-->
-      <object
-          v-if="props.imgUrl"
-          class="w-full bg-black h-40 bg-blend-color-burn rounded-t-2xl"
-          style="object-fit:cover;"
-          :data="props.imgUrl"></object>
+      <div v-if="props.imgUrl" class="w-full bg-gray-50 rounded-t-lg p-2">
+        <object
+            class="w-full bg-black h-40 bg-blend-color-burn rounded-t-2xl"
+            style="object-fit:contain;"
+            :data="props.imgUrl"></object>
+      </div>
+
       <div class="flex flex-col px-4 pt-4">
         <div class="flex flex-row justify-between">
-          <h3 class="font-bold text-lg w-2/3">{{ props.title }}</h3>
-          <p class="font-medium flex-auto text-end w-1/3">{{ props.amount }}</p>
+          <p class="font-medium text-gray-700 text-2xs w-2/3">{{ props.title }}</p>
+          <p class="font-medium text-gray-700 flex-auto text-end w-1/3">{{ props.amount }}</p>
         </div>
         <p class="text-gray-600">{{ props.description }}</p>
       </div>
