@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-yellow-50 dark:bg-black-900 py-10">
+  <div class="bg-red-50 py-10">
     <div class="container mx-auto 2xl:w-8/12 xl:w-4/5 md:w-11/12 w-full">
       <div class="">
         <div class="container mx-auto">
