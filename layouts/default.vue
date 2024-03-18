@@ -1,5 +1,8 @@
 <template>
   <div class="">
+    <div class="">
+
+    </div>
     <slot/>
     <LazyBaseFooter></LazyBaseFooter>
   </div>
