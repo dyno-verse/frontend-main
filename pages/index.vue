@@ -4,7 +4,7 @@
     <div class="flex flex-row justify-center items-center w-5/6 mx-auto my-12">
       <div class="w-1/2 flex flex-col space-y-4">
         <h3 class="text-6xl font-bold">
-          Let's handle your <span class="text-red-500">restaurant</span>, while you focus on <span class="text-red-500">greatness</span>.
+          Let's handle your restaurant, while you focus on greatness.
         </h3>
         <p class="text-gray-600 w-3/4">
           Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth operations,
@@ -23,11 +23,17 @@
 
     <div class="w-full bg-gray-50 text-center p-20">
 
-      <h2 class="font-bold text-3xl mb-12">A simple recipe for success</h2>
+      <span
+          class="bg-green-100 text-green-800 my-5 text-sm font-medium px-5 py-1.5 rounded-2xl">Green</span>
+      <h2 class="font-bold text-3xl mt-2">A simple recipe for success</h2>
+      <p class="mb-12 text-sm text-gray-400 w-1/4 flex justify-center mx-auto">on what truly matters - delivering
+        exceptional dining experiences.</p>
 
       <div class="grid grid-cols-3 gap-7 mx-20">
-        <div class="bg-white h-72 rounded-lg overflow-hidden p-5" v-for="i in 6">
-          <img src="../assets/imgs/backdrop.png" class="-mt-48"/>
+        <div class="bg-white h-72 rounded-lg overflow-hidden p-5"
+             style="background-image: url('./assets/imgs/backdrop.png')"
+             v-for="i in 6">
+          <!--          <img src="" class="-mt-48 z-10"/>-->
 
           <div class="z-50">
             <h4 class="font-bold my-1 text-lg">Delight taste buds</h4>
@@ -39,7 +45,7 @@
 
     </div>
 
-    <div class="w-full h-[450px] bg-gray-900">
+    <div class="w-full h-[450px] bg-red-50">
       <div class="grid grid-cols-3">
         <div class="">
 
@@ -49,9 +55,9 @@
 
 
     <div class="w-full bg-white justify-center flex py-24">
-<!--      <h2 class="font-bold text-3xl mb-12">Pricing</h2>-->
+      <!--      <h2 class="font-bold text-3xl mb-12">Pricing</h2>-->
       <div class="grid grid-cols-3 gap-6 w-3/4 justify-center">
-        <div class="h-[500px] bg-gray-50 border-gray-200 border rounded-lg" v-for="i in 3">
+        <div class="h-[500px] bg-white border-gray-200 border rounded-lg" v-for="i in 3">
 
         </div>
       </div>
