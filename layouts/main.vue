@@ -1,12 +1,12 @@
 <template>
-
+  <div class="container mx-auto">
+    <slot class="w-full"/>
+  </div>
 </template>
+
 
 <script lang="ts" setup>
 
-definePageMeta({
-  layout:'main'
-})
 
 </script>
 

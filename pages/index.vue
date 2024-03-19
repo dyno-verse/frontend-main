@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full container mx-auto">
+  <div class="w-full">
 
-    <div class="flex flex-row justify-center items-center my-12 w-full">
+    <div class="flex flex-row justify-center items-center w-5/6 mx-auto my-12">
       <div class="w-1/2 flex flex-col space-y-4">
         <h3 class="text-6xl font-bold">
           Let's handle your <span class="text-red-500">restaurant</span>, while you focus on <span class="text-red-500">greatness</span>.
@@ -21,27 +21,58 @@
     </div>
 
 
-    <div class="w-full bg-gray-50 p-20">
+    <div class="w-full bg-gray-50 text-center p-20">
+
+      <h2 class="font-bold text-3xl mb-12">A simple recipe for success</h2>
 
       <div class="grid grid-cols-3 gap-7 mx-20">
-        <div class="bg-red-50 h-72 rounded-lg" v-for="i in 6"></div>
+        <div class="bg-white h-72 rounded-lg overflow-hidden p-5" v-for="i in 6">
+          <img src="../assets/imgs/backdrop.png" class="-mt-48"/>
+
+          <div class="z-50">
+            <h4 class="font-bold my-1 text-lg">Delight taste buds</h4>
+            <p class="text-gray-500 text-sm">Start serving meals that satisfy cravings and bring smiles to those who
+              savor your creations.</p>
+          </div>
+        </div>
       </div>
 
     </div>
 
+    <div class="w-full h-[450px] bg-gray-900">
+      <div class="grid grid-cols-3">
+        <div class="">
 
-    <div class="w-full bg-white py-5">
-      <div class="grid grid-cols-3 justify-center">
-        <div class="flex flex-col items-center space-y-2 text-center my-5 p-12" v-for="i in 6">
-            <span class="bg-blue-50 w-12 h-12 rounded-full">
-
-            </span>
-          <p class="font-medium">No App install</p>
-          <p class="text-2xs">Free yourself from the day-to-day chaos of restaurant management and</p>
         </div>
       </div>
     </div>
 
+
+    <div class="w-full bg-white justify-center flex py-24">
+<!--      <h2 class="font-bold text-3xl mb-12">Pricing</h2>-->
+      <div class="grid grid-cols-3 gap-6 w-3/4 justify-center">
+        <div class="h-[500px] bg-gray-50 border-gray-200 border rounded-lg" v-for="i in 3">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-red-50 w-full py-24 flex justify-center">
+      <div class="flex flex-row  w-2/5 mx-20">
+        <div class="flex flex-col space-y-2">
+          <h3 class="text-3xl font-bold">Ready to elevate your business’s experience?</h3>
+          <p>
+            Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth operations,
+            allowing you to focus on what truly matters - delivering exceptional dining experiences.
+          </p>
+          <button type="button"
+                  class="text-white bg-red-500 font-medium w-1/4 rounded-lg text-sm px-5 py-2.5 mb-2">
+            Book a demo
+          </button>
+        </div>
+
+      </div>
+    </div>
 
   </div>
 </template>

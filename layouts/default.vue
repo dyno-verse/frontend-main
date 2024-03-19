@@ -1,17 +1,17 @@
 <template>
   <div class="container mx-auto">
-    <div class="w-full flex flex-row justify-between py-5">
+    <div class="w-full flex flex-row justify-between w-5/6 mx-auto py-5">
       <div class="flex flex-row items-center space-x-6">
         <NuxtLink to="/" active-class="text-red-500 font-medium">
           <img src="assets/imgs/logo.svg" class="h-12 w-12">
         </NuxtLink>
-        <NuxtLink to="solutions" class="font-medium text-sm">
+        <NuxtLink to="solutions" active-class="text-red-500 font-bold" class="font-medium text-sm">
           What's dyno menu?
         </NuxtLink>
-        <NuxtLink to="solutions" class="font-medium text-sm">
+        <NuxtLink to="solutions" active-class="text-red-500 font-bold" class="font-medium text-sm">
           Solutions
         </NuxtLink>
-        <NuxtLink to="pricing" active-class="text-red-500 font-medium" class="text-sm">
+        <NuxtLink to="pricing" active-class="text-red-500 font-bold" class="text-sm font-medium">
           Pricing
         </NuxtLink>
         <NuxtLink to="blog" class="text-sm font-medium">
