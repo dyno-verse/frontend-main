@@ -283,8 +283,6 @@ const addToCart = (item: IItem) => {
   } else {
     itemQuantityIncrease(pos)
   }
-
-  console.log(cartItems.value)
 }
 
 // const
@@ -354,6 +352,10 @@ const openCart = () => {
 onMounted(() => {
   getBusinessInfo()
 });
+
+definePageMeta({
+  layout:'main'
+})
 
 
 </script>

@@ -20,7 +20,7 @@ const pricingTiers = [
 ]
 
 definePageMeta({
-  layout: 'default'
+  layout: 'main'
 })
 
 </script>
