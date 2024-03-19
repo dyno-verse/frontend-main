@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="">
     <div class="w-full flex flex-row justify-between w-5/6 mx-auto py-5">
       <div class="flex flex-row items-center space-x-6">
         <NuxtLink to="/" active-class="text-red-500 font-medium">
