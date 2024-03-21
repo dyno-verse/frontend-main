@@ -11,6 +11,7 @@
           allowing you to focus on what truly matters - delivering exceptional dining experiences.
         </p>
         <button type="button"
+                @click="openModal()"
                 class="text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 w-1/5">
           Book a demo
         </button>
@@ -30,13 +31,13 @@
         exceptional dining experiences.</p>
 
       <div class="grid grid-cols-3 gap-7 mx-20">
-        <div class="bg-white h-72 rounded-lg overflow-hidden p-5"
+        <div class="bg-white h-72 rounded-lg overflow-hidden p-5 items-center flex"
              style="background-image: url('./assets/imgs/backdrop.png')"
-             v-for="i in 6">
+             v-for="feature in features">
           <!--          <img src="" class="-mt-48 z-10"/>-->
 
           <div class="z-50">
-            <h4 class="font-bold my-1 text-lg">Delight taste buds</h4>
+            <h4 class="font-bold my-1 text-lg">{{ feature.name }}</h4>
             <p class="text-gray-500 text-sm">Start serving meals that satisfy cravings and bring smiles to those who
               savor your creations.</p>
           </div>
@@ -57,8 +58,33 @@
     <div class="w-full bg-white justify-center flex py-24">
       <!--      <h2 class="font-bold text-3xl mb-12">Pricing</h2>-->
       <div class="grid grid-cols-3 gap-6 w-3/4 justify-center">
-        <div class="h-[500px] bg-white border-gray-200 border rounded-lg" v-for="i in 3">
+        <div class="bg-white border-gray-200 border rounded-lg p-5 flex flex-col"
+             :class="[index === 1 ? 'border-2 border-red-500' : '']"
+             v-for="(bill,index) in billing">
+          <h4 class="font-medium text-3xl">{{ bill.name }}</h4>
+          <p>A standard plan for small teams.</p>
+          <div class="flex flex-wrap flex-row items-center mt-10 mb-5">
+            <h3 class="text-4xl">{{ format('GHC', bill.pricing) }}</h3> <span class="text-end">/month</span>
+          </div>
+          <button type="button"
+                  class="text-red-500 bg-red-50 font-medium w-3/4 rounded-lg text-sm px-5 py-2.5 mb-2">
+            Book a demo
+          </button>
 
+          <div class="flex flex-col">
+            <div class="flex flex-row space-x-2 items-center" v-for="feature in bill.features">
+              <span class="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center text-center">
+
+                <svg class="w-4 h-4 text-red-600 font-bold" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                     width="20" height="20" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+        d="M5 11.917 9.724 16.5 19 7.5"/>
+</svg>
+
+              </span>
+              <p class="py-2">{{ feature }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,14 +106,134 @@
       </div>
     </div>
 
+    <div id="authentication-modal" ref="modalId" tabindex="-1" aria-hidden="true"
+         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Request A Demo
+            </h3>
+            <button type="button"
+                    @click="modal.hide()"
+                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="authentication-modal">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="p-4 md:p-5">
+            <div class="space-y-4">
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Full name</label>
+                <input type="text" name="email" id="email"
+                       v-model="request.fullName"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Email</label>
+                <input type="email" name="email" id="email"
+                       v-model="request.email"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                  number</label>
+                <input type="text" name="email" id="email"
+                       v-model="request.phoneNumber"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Restaurant name</label>
+                <input type="email" name="email" id="email"
+                       v-model="request.restaurantName"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="" required/>
+              </div>
+              <button @click="requestDemo()"
+                      class="w-full text-white my-2 bg-red-500 font-medium rounded-lg text-sm px-5 py-3 text-center">
+                Request
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script lang="ts" setup>
+import {Modal, ModalOptions} from "flowbite";
+import {ICreateRequestDemo} from "~/repository/models/inputModels";
+import {format} from 'money-formatter';
 
-definePageMeta({
-  layout: 'default'
+const modal = ref({})
+const modalId = ref()
+const request = ref({} as ICreateRequestDemo)
+const {$api} = useNuxtApp()
+const snackbar = useSnackbar()
+
+
+onMounted(() => {
+  // options with default values
+  const modalOptions: ModalOptions = {
+    placement: 'bottom-right',
+    backdrop: 'dynamic',
+    backdropClasses:
+        'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+    closable: true,
+    onHide: () => {
+      console.log('modal is hidden');
+    },
+    onShow: () => {
+      console.log('modal is shown');
+    },
+    onToggle: () => {
+      console.log('modal has been toggled');
+    },
+  };
+  modal.value = new Modal(modalId.value, modalOptions);
+
 })
+
+const requestDemo = () => {
+
+  $api.demo.create(request.value).then(data => {
+    snackbar.add({
+      type: 'success',
+      title: data.data.title,
+      text: data.data.message
+    })
+  }).catch(error => {
+
+  })
+}
+
+
+const openModal = () => {
+  modal.value.show()
+}
+
+definePageMeta(
+    {
+      layout: 'default',
+      name: 'Dyno Menu'
+    }
+)
 
 const gettingStartedSteps = [
   {step: 1, action: 'Sign up'},
@@ -95,23 +241,53 @@ const gettingStartedSteps = [
   {step: 3, action: 'Start serving meals'}
 ]
 
+
+const billing = [
+  {
+    name: 'Lite',
+    pricing: '50',
+    features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)']
+  },
+  {
+    name: 'Basic',
+    pricing: '150',
+    features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
+      'Customers management', 'Point of sale (POS)',
+      'Kitchen Display System']
+  },
+  {
+    name: 'Pro',
+    pricing: '250',
+    features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
+      'Customers management', 'Point of sale (POS)', 'Kitchen Display System',
+      'Reservation', 'Loyalty', 'Gift cards']
+  }
+]
+
 const features = [
   {
-    name: "No mobile app to",
+    name: "No contact quest experience",
     subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
     color: 'bg-blue-100',
     icon: '/imgs/globe.svg'
 
   },
   {
-    name: "Always accessible",
+    name: "Back of House",
     subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
     color: 'bg-green-100',
     icon: '/imgs/cloud.svg'
 
   },
   {
-    name: "Always accessible",
+    name: "Digital Ordering",
+    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
+    color: 'bg-green-100',
+    icon: '/imgs/cloud.svg'
+
+  },
+  {
+    name: "Guest Management",
     subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
     color: 'bg-green-100',
     icon: '/imgs/cloud.svg'
@@ -120,12 +296,7 @@ const features = [
 ]
 
 useHead({title: 'Dyno Menu'})
-definePageMeta(
-    {
-      layout: 'default',
-      name: 'Dyno Menu'
-    }
-)
+
 
 </script>
 
