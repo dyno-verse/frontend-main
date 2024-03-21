@@ -16,8 +16,8 @@
           Book a demo
         </button>
       </div>
-      <div class="w-1/2 h-96 bg-gray-50">
-
+      <div class="w-1/2 bg-gray-50">
+        <img src="../assets/imgs/woman.jpg" class="h-auto w-full rounded-lg"/>
       </div>
     </div>
 
@@ -249,14 +249,14 @@ const billing = [
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)']
   },
   {
-    name: 'Basic',
+    name: 'Pro',
     pricing: '150',
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
       'Customers management', 'Point of sale (POS)',
       'Kitchen Display System']
   },
   {
-    name: 'Pro',
+    name: 'Premium',
     pricing: '250',
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
       'Customers management', 'Point of sale (POS)', 'Kitchen Display System',
