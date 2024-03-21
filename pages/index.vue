@@ -16,8 +16,8 @@
           Book a demo
         </button>
       </div>
-      <div class="w-1/2 h-96 bg-gray-50">
-
+      <div class="w-1/2 bg-gray-50">
+        <img src="../assets/imgs/woman.jpg" class="h-auto w-full rounded-lg"/>
       </div>
     </div>
 
@@ -34,8 +34,6 @@
         <div class="bg-white h-72 rounded-lg overflow-hidden p-5 items-center flex"
              style="background-image: url('./assets/imgs/backdrop.png')"
              v-for="feature in features">
-          <!--          <img src="" class="-mt-48 z-10"/>-->
-
           <div class="z-50">
             <h4 class="font-bold my-1 text-lg">{{ feature.name }}</h4>
             <p class="text-gray-500 text-sm">Start serving meals that satisfy cravings and bring smiles to those who
@@ -46,33 +44,76 @@
 
     </div>
 
-    <div class="w-full h-[450px] bg-red-50">
+    <div class="w-full bg-red-50">
       <div class="grid grid-cols-3">
-        <div class="">
+        <div
+            class="col-span-3 bg-cover bg-center bg-no-repeat bg-fixed bg-[url('../../assets/imgs/delighted_customers.jpg')]">
 
+          <div class="container mx-auto">
+            <div
+                class="backdrop-blur-xl bg-white/30 w-2/5 h-[500px] mx-24 my-5 p-5 text-white rounded-lg items-center flex">
+              <div>
+                <h4 class="text-6xl">Ready to elevate your business’s experience?</h4>
+                <p class="text-2xl">
+                  Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth
+                  operations, allowing you to focus on what truly matters - delivering exceptional dining experiences.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
 
-    <div class="w-full bg-white justify-center flex py-24">
-      <!--      <h2 class="font-bold text-3xl mb-12">Pricing</h2>-->
-      <div class="grid grid-cols-3 gap-6 w-3/4 justify-center">
-        <div class="bg-white border-gray-200 border rounded-lg p-5 flex flex-col"
-             :class="[index === 1 ? 'border-2 border-red-500' : '']"
-             v-for="(bill,index) in billing">
-          <h4 class="font-medium text-3xl">{{ bill.name }}</h4>
-          <p>A standard plan for small teams.</p>
-          <div class="flex flex-wrap flex-row items-center mt-10 mb-5">
-            <h3 class="text-4xl">{{ format('GHC', bill.pricing) }}</h3> <span class="text-end">/month</span>
-          </div>
-          <button type="button"
-                  class="text-red-500 bg-red-50 font-medium w-3/4 rounded-lg text-sm px-5 py-2.5 mb-2">
-            Book a demo
-          </button>
+    <div class="w-full bg-white py-24">
 
-          <div class="flex flex-col">
-            <div class="flex flex-row space-x-2 items-center" v-for="feature in bill.features">
+      <div class="flex flex-col space-y-2 text-center w-1/3 justify-center mx-auto mb-10">
+        <h4 class="text-4xl"> A plan for every need</h4>
+        <p> Our plans are designed to meet the requirements of both beginners and players. Get the right plan that suits
+          you.</p>
+      </div>
+
+      <div class="flex w-2/3 justify-center mx-auto mb-10">
+        <ul class="grid grid-cols-2 w-1/5 gap-6">
+          <li class="text-center">
+            <input type="radio" id="hosting-small" name="hosting" :value="PlanPeriods.MONTHLY" v-model="billingPeriod"
+                   value="hosting-small" class="hidden peer" required/>
+            <label for="hosting-small"
+                   class="inline-flex items-center justify-between py-2  px-5 text-gray-700 bg-white border border-gray-300 rounded-lg cursor-pointer peer-checked:font-bold peer-checked:bg-red-50 peer-checked:border-red-600 peer-checked:text-red-600">
+              <div class="w-full text-2xs">Monthly</div>
+            </label>
+          </li>
+          <li class="text-center">
+            <input type="radio" id="hosting-big" name="hosting" :value="PlanPeriods.YEARLY" v-model="billingPeriod"
+                   class="hidden peer">
+            <label for="hosting-big"
+                   class="inline-flex items-center justify-between py-2 px-6 text-gray-700 bg-white border border-gray-300 rounded-lg cursor-pointer peer-checked:font-bold peer-checked:bg-red-50 peer-checked:border-red-600 peer-checked:text-red-600">
+              <div class="w-full text-2xs">Yearly</div>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="justify-center flex">
+        <div class="grid grid-cols-3 gap-6 w-3/4 justify-center">
+          <div class="bg-white border-gray-200 border rounded-lg p-5 flex flex-col"
+               :class="[index === 1 ? 'border-2 border-red-500' : '']"
+               v-for="(bill,index) in billing">
+            <h4 class="font-medium text-3xl">{{ bill.name }}</h4>
+            <p>A standard plan for small teams.</p>
+            <div class="flex flex-wrap flex-row items-center mt-10 mb-5">
+              <h3 class="text-4xl">{{ format('GHC', getBillingCost(billingPeriod, bill.pricing)) }}</h3> <span
+                class="text-end">/{{ selectBillingPeriod(billingPeriod)}}</span>
+            </div>
+            <button type="button"
+                    @click="openModal()"
+                    class="text-red-500 bg-red-50 font-medium w-3/4 rounded-lg text-sm px-5 py-2.5 mb-2">
+              Book a demo
+            </button>
+
+            <div class="flex flex-col">
+              <div class="flex flex-row space-x-2 items-center" v-for="feature in bill.features">
               <span class="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center text-center">
 
                 <svg class="w-4 h-4 text-red-600 font-bold" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +123,8 @@
 </svg>
 
               </span>
-              <p class="py-2">{{ feature }}</p>
+                <p class="py-2">{{ feature }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -187,6 +229,13 @@ const request = ref({} as ICreateRequestDemo)
 const {$api} = useNuxtApp()
 const snackbar = useSnackbar()
 
+enum PlanPeriods {
+  MONTHLY,
+  YEARLY
+}
+
+const billingPeriod = ref(PlanPeriods.MONTHLY)
+
 
 onMounted(() => {
   // options with default values
@@ -249,20 +298,39 @@ const billing = [
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)']
   },
   {
-    name: 'Basic',
+    name: 'Pro',
     pricing: '150',
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
       'Customers management', 'Point of sale (POS)',
       'Kitchen Display System']
   },
   {
-    name: 'Pro',
+    name: 'Premium',
     pricing: '250',
     features: ['Inventory Management', 'Online Ordering', 'QR Code (digital menu)',
       'Customers management', 'Point of sale (POS)', 'Kitchen Display System',
       'Reservation', 'Loyalty', 'Gift cards']
   }
 ]
+
+const getBillingCost = (billingPeriod: PlanPeriods, monthlyCost: string) => {
+  switch (billingPeriod) {
+    case PlanPeriods.MONTHLY:
+      return parseInt(monthlyCost)
+    case PlanPeriods.YEARLY:
+      return parseInt(monthlyCost) * 12
+  }
+}
+
+const selectBillingPeriod = (billingPeriod: PlanPeriods) => {
+  switch (billingPeriod) {
+    case PlanPeriods.MONTHLY:
+      return "month"
+    case PlanPeriods.YEARLY:
+      return "year"
+  }
+}
+
 
 const features = [
   {
@@ -292,8 +360,22 @@ const features = [
     color: 'bg-green-100',
     icon: '/imgs/cloud.svg'
 
+  },
+  {
+    name: "Guest Management",
+    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
+    color: 'bg-green-100',
+    icon: '/imgs/cloud.svg'
+
+  },
+  {
+    name: "Guest Management",
+    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum, gravida in ac cursus.',
+    color: 'bg-green-100',
+    icon: '/imgs/cloud.svg'
   }
 ]
+
 
 useHead({title: 'Dyno Menu'})
 

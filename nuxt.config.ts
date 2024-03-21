@@ -18,8 +18,12 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode',
-        'nuxt-snackbar'
+        'nuxt-snackbar',
+        '@nuxt/content'
     ],
+    content: {
+        // ... options
+    },
     snackbar: {
         bottom: true,
         right: true,
