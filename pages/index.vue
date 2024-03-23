@@ -140,6 +140,7 @@
             allowing you to focus on what truly matters - delivering exceptional dining experiences.
           </p>
           <button type="button"
+                  @click="openModal()"
                   class="text-white bg-red-500 font-medium w-1/4 rounded-lg text-sm px-5 py-2.5 mb-2">
             Book a demo
           </button>
