@@ -95,7 +95,7 @@
     <!-- drawer component -->
     <div id="drawer-example"
          ref="drawerId"
-         class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+         class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80"
          tabindex="-1" aria-labelledby="drawer-label">
 
       <div class="">
@@ -108,7 +108,7 @@
                 <button type="button"
                         @click="itemQuantityDecrease(index)"
                         class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center">
-                  <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                  <svg class="w-5 h-5 text-gray-800" aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -119,7 +119,7 @@
                 <button type="button"
                         @click="itemQuantityIncrease(index)"
                         class="text-white bg-red-50 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center">
-                  <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                  <svg class="w-5 h-5 text-gray-800" aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
