@@ -1,19 +1,23 @@
 <template>
   <div class="w-full">
 
-    <div class="flex lg:flex-row xs:flex-col space-x-5  justify-center items-center w-5/6 mx-auto my-12">
+    <div class="flex md:flex-row lg:flex-row flex-col space-x-5  justify-center items-center w-5/6 mx-auto mt-10 mb-20">
 
-      <div class="md:w-1/2 lg:w-1/2 2xl:w-1/2 xl:w-1/2 flex flex-col space-y-4">
-        <h3 class="2xl:text-6xl xl:text-5xl lg:text-4xl md:text-2xl text-4xl font-bold">
+      <div  class="2xl:hidden xl:hidden lg:hidden md:hidden w-full bg-gray-50 my-5">
+        <img src="../assets/imgs/woman.jpg" class="w-full rounded-lg"/>
+      </div>
+
+      <div class="md:w-1/2 lg:w-1/2 2xl:w-1/2 xl:w-1/2 w-full mx-0 flex flex-col space-y-4">
+        <h3 class="2xl:text-6xl xl:text-5xl lg:text-4xl md:text-lg text-4xl font-bold">
           Let's handle your restaurant, while you focus on greatness.
         </h3>
-        <p class="text-gray-500 2xl:w-3/4 md:w-3/4 lg:w-3/4 2xl:text-xl xl:text-xl md:text-xs lg:text-sm text-md">
+        <p class="text-gray-600 2xl:w-3/4 md:w-5/6 lg:w-3/4 2xl:text-xl xl:text-xl md:text-xs lg:text-sm text-2xs">
           Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth operations,
-          allowing you to focus on what truly matters - delivering exceptional dining experiences.
+          allowing you to focus on what truly matters.
         </p>
         <button type="button"
                 @click="openModal()"
-                class="text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 w-4/6">
+                class="text-white bg-red-500 font-medium rounded-lg md:w-1/2 text-sm px-5 py-2.5 mb-2 w-3/6 2xl:w-1/4 xl:w-1/4 lg:w-2/5">
           Book a demo
         </button>
       </div>
@@ -50,33 +54,34 @@
 
     </div>
 
-    <!--        <div class="w-full bg-red-50">-->
-    <!--          <div class="grid grid-cols-3">-->
-    <!--            <div-->
-    <!--                class="col-span-3 bg-cover bg-center bg-no-repeat bg-fixed bg-[url('../../assets/imgs/delighted_customers.jpg')]">-->
+            <div class="w-full bg-red-50 hidden">
+              <div class="grid grid-cols-3">
+                <div
+                    class="col-span-3 bg-cover bg-center bg-no-repeat bg-fixed bg-[url('../../assets/imgs/delighted_customers.jpg')]">
 
-    <!--              <div class="container mx-auto">-->
-    <!--                <div-->
-    <!--                    class="backdrop-blur-xl bg-white/30 w-2/5 h-[500px] mx-24 my-5 p-5 text-white rounded-lg items-center flex">-->
-    <!--                  <div>-->
-    <!--                    <h4 class="text-6xl">Ready to elevate your business’s experience?</h4>-->
-    <!--                    <p class="text-2xl">-->
-    <!--                      Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth-->
-    <!--                      operations, allowing you to focus on what truly matters - delivering exceptional dining experiences.-->
-    <!--                    </p>-->
-    <!--                  </div>-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
+                  <div class="container mx-auto">
+                    <div
+                        class="backdrop-blur-xl bg-white/30 w-2/5 h-[500px] mx-24 my-5 p-5 text-white rounded-lg items-center flex">
+                      <div>
+                        <h4 class="text-6xl">Ready to elevate your business’s experience?</h4>
+                        <p class="text-2xl">
+                          Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth
+                          operations, allowing you to focus on what truly matters - delivering exceptional dining experiences.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
     <div class="w-full bg-white py-10">
 
       <div class="flex flex-col space-y-2 text-center lg:w-2/3 w-4/6 justify-center mx-auto mb-10">
-        <h4 class="xl:text-3xl md:text-2xl text-2xl lg:text-2xl"> A plan for every need</h4>
-        <p class="text-sm text-gray-500 2xl:text-lg lg:w-2/3 w-full justify-center mx-auto"> Our plans are designed to meet the requirements of both beginners and players. Get the right plan that suits
+        <h4 class="xl:text-3xl md:text-2xl text-3xl lg:text-2xl"> A plan for every need</h4>
+        <p class="text-sm text-gray-500 2xl:text-lg lg:w-2/3 w-full justify-center mx-auto"> Our plans are designed to
+          meet the requirements of both beginners and players. Get the right plan that suits
           you.</p>
       </div>
 
@@ -138,90 +143,92 @@
       </div>
     </div>
 
-    <!--    <div class="bg-red-50 w-full py-24 flex justify-center">-->
-    <!--      <div class="flex flex-row  w-2/5 mx-20">-->
-    <!--        <div class="flex flex-col space-y-2">-->
-    <!--          <h3 class="text-3xl font-bold">Ready to elevate your business’s experience?</h3>-->
-    <!--          <p>-->
-    <!--            Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth operations,-->
-    <!--            allowing you to focus on what truly matters - delivering exceptional dining experiences.-->
-    <!--          </p>-->
-    <!--          <button type="button"-->
-    <!--                  @click="openModal()"-->
-    <!--                  class="text-white bg-red-500 font-medium w-1/4 rounded-lg text-sm px-5 py-2.5 mb-2">-->
-    <!--            Book a demo-->
-    <!--          </button>-->
-    <!--        </div>-->
 
-    <!--      </div>-->
-    <!--    </div>-->
+    <div class="bg-red-50 w-full py-24 flex justify-center">
+      <div class="flex flex-row 2xl:w-2/5 xl:w-2/5 lg:w-3/5 md:w-4/5 2xl:mx-10 mx-10">
+        <div class="flex flex-col space-y-2">
+          <h3 class="text-3xl font-bold">Ready to elevate your business’s experience?</h3>
+          <p>
+            Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth operations,
+            allowing you to focus on what truly matters - delivering exceptional dining experiences.
+          </p>
+          <button type="button"
+                  @click="openModal()"
+                  class="text-white bg-red-500 font-medium 2xl:w-1/4 xl:w-1/4 lg:w-1/4 w-3/5 rounded-lg text-sm px-5 py-2.5 mb-2">
+            Book a demo
+          </button>
+        </div>
 
-    <!--    <div id="authentication-modal" ref="modalId" tabindex="-1" aria-hidden="true"-->
-    <!--         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">-->
-    <!--      <div class="relative p-4 w-full max-w-md max-h-full">-->
-    <!--        &lt;!&ndash; Modal content &ndash;&gt;-->
-    <!--        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">-->
-    <!--          &lt;!&ndash; Modal header &ndash;&gt;-->
-    <!--          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">-->
-    <!--            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">-->
-    <!--              Request A Demo-->
-    <!--            </h3>-->
-    <!--            <button type="button"-->
-    <!--                    @click="modal.hide()"-->
-    <!--                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"-->
-    <!--                    data-modal-hide="authentication-modal">-->
-    <!--              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"-->
-    <!--                   viewBox="0 0 14 14">-->
-    <!--                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-    <!--                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>-->
-    <!--              </svg>-->
-    <!--              <span class="sr-only">Close modal</span>-->
-    <!--            </button>-->
-    <!--          </div>-->
-    <!--          &lt;!&ndash; Modal body &ndash;&gt;-->
-    <!--          <div class="p-4 md:p-5">-->
-    <!--            <div class="space-y-4">-->
-    <!--              <div>-->
-    <!--                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">-->
-    <!--                  Full name</label>-->
-    <!--                <input type="text" name="email" id="email"-->
-    <!--                       v-model="request.fullName"-->
-    <!--                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"-->
-    <!--                       placeholder="" required/>-->
-    <!--              </div>-->
-    <!--              <div>-->
-    <!--                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">-->
-    <!--                  Email</label>-->
-    <!--                <input type="email" name="email" id="email"-->
-    <!--                       v-model="request.email"-->
-    <!--                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"-->
-    <!--                       placeholder="" required/>-->
-    <!--              </div>-->
-    <!--              <div>-->
-    <!--                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone-->
-    <!--                  number</label>-->
-    <!--                <input type="text" name="email" id="email"-->
-    <!--                       v-model="request.phoneNumber"-->
-    <!--                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"-->
-    <!--                       placeholder="" required/>-->
-    <!--              </div>-->
-    <!--              <div>-->
-    <!--                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">-->
-    <!--                  Restaurant name</label>-->
-    <!--                <input type="email" name="email" id="email"-->
-    <!--                       v-model="request.restaurantName"-->
-    <!--                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"-->
-    <!--                       placeholder="" required/>-->
-    <!--              </div>-->
-    <!--              <button @click="requestDemo()"-->
-    <!--                      class="w-full text-white my-2 bg-red-500 font-medium rounded-lg text-sm px-5 py-3 text-center">-->
-    <!--                Request-->
-    <!--              </button>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
+      </div>
+    </div>
+
+
+    <div id="authentication-modal" ref="modalId" tabindex="-1" aria-hidden="true"
+         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Request A Demo
+            </h3>
+            <button type="button"
+                    @click="modal.hide()"
+                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    data-modal-hide="authentication-modal">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="p-4 md:p-5">
+            <div class="space-y-4">
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                  Full name</label>
+                <input type="text" name="email" id="email"
+                       v-model="request.fullName"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                  Email</label>
+                <input type="email" name="email" id="email"
+                       v-model="request.email"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Phone
+                  number</label>
+                <input type="text" name="email" id="email"
+                       v-model="request.phoneNumber"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                       placeholder="" required/>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                  Restaurant name</label>
+                <input type="email" name="email" id="email"
+                       v-model="request.restaurantName"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                       placeholder="" required/>
+              </div>
+              <button @click="requestDemo()"
+                      class="w-full text-white my-5 bg-red-500 font-medium rounded-lg text-sm px-5 py-3 text-center">
+                Request
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   </div>
