@@ -1,9 +1,9 @@
 <template>
   <div class="w-full">
 
-    <div class="flex md:flex-row lg:flex-row flex-col space-x-5  justify-center items-center w-5/6 mx-auto mt-10 mb-20">
+    <div class="flex md:flex-row lg:flex-row flex-col justify-center items-center w-5/6 mx-auto mt-10 mb-20">
 
-      <div  class="2xl:hidden xl:hidden lg:hidden md:hidden w-full bg-gray-50 my-5">
+      <div class="2xl:hidden xl:hidden lg:hidden md:hidden w-full bg-gray-50 my-5">
         <img src="../assets/imgs/woman.jpg" class="w-full rounded-lg"/>
       </div>
 
@@ -54,26 +54,33 @@
 
     </div>
 
-            <div class="w-full bg-red-50 hidden">
-              <div class="grid grid-cols-3">
-                <div
-                    class="col-span-3 bg-cover bg-center bg-no-repeat bg-fixed bg-[url('../../assets/imgs/delighted_customers.jpg')]">
+    <div class="w-full">
+      <div class="">
+        <div
+            class=" bg-cover bg-center bg-no-repeat bg-fixed bg-[url('../../assets/imgs/delighted_customers.jpg')]">
 
-                  <div class="container mx-auto">
-                    <div
-                        class="backdrop-blur-xl bg-white/30 w-2/5 h-[500px] mx-24 my-5 p-5 text-white rounded-lg items-center flex">
-                      <div>
-                        <h4 class="text-6xl">Ready to elevate your business’s experience?</h4>
-                        <p class="text-2xl">
-                          Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth
-                          operations, allowing you to focus on what truly matters - delivering exceptional dining experiences.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div class="">
+            <div
+                class="bg-white/70 backdrop-blur-sm 2xl:px-20 px-10 p-10 text-red-400 items-center flex 2xl:py-40 lg:py-36 md:py-24 py-10 text-center">
+              <div>
+                <h4 class="text-4xl 2xl:text-6xl 2xl:w-2/3 xl:text-5xl lg:text-4xl lg:w-4/5 w-full mx-auto text-gray-900">Ready to elevate your
+                  business’s experience?</h4>
+                <p class="text-md w-full lg:w-2/4 mx-auto text-gray-700 py-2">
+                  Free yourself from the day-to-day chaos of restaurant management and entrust us to ensure smooth
+                  operations, allowing you to focus on what truly matters - delivering exceptional dining experiences.
+                </p>
+                <a href="https://dynomenu.com/dyno-pub" target="_blank">
+                  <button type="button"
+                          class="text-white mt-5 bg-red-500 font-medium 2xl:w-1/5 md:w-1/3 xl:w-1/4 lg:w-1/4 w-3/5 rounded-lg text-sm px-5 py-3 mb-2">
+                    Use Case
+                  </button>
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <div class="w-full bg-white py-10">
@@ -220,6 +227,9 @@
                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                        placeholder="" required/>
               </div>
+              <small class="text-gray-400">
+                Start serving meals that satisfy cravings and bring smiles to those who savor your creations.
+              </small>
               <button @click="requestDemo()"
                       class="w-full text-white my-5 bg-red-500 font-medium rounded-lg text-sm px-5 py-3 text-center">
                 Request
