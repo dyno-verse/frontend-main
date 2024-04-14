@@ -1,22 +1,24 @@
 <template>
   <div class="">
-    <div class="hidden flex flex-row items-center justify-between mx-auto py-5 w-5/6">
+    <div class="flex flex-row items-center justify-between mx-auto py-5 w-5/6">
       <div class="flex flex-row items-center space-x-6">
         <NuxtLink to="/" active-class="text-red-500 font-medium">
           <img src="assets/imgs/logo.svg" class="h-12 w-12">
         </NuxtLink>
-<!--        <NuxtLink to="solutions" active-class="text-red-500 font-bold" class="font-medium text-sm">-->
-<!--          What's dyno menu?-->
-<!--        </NuxtLink>-->
-        <NuxtLink to="solutions" active-class="text-red-500 font-bold" class="font-medium text-sm">
-          Solutions
-        </NuxtLink>
-        <NuxtLink to="pricing" active-class="text-red-500 font-bold" class="text-sm font-medium">
-          Pricing
-        </NuxtLink>
-        <NuxtLink to="blog" class="text-sm font-medium">
-          Blog
-        </NuxtLink>
+        <div class="hidden">
+          <NuxtLink to="/" active-class="text-red-500 font-bold" class="font-bold text-md">
+            dyno menu
+          </NuxtLink>
+          <NuxtLink to="/use-cases/" active-class="text-red-500 font-bold" class="font-medium text-md">
+            Use Cases
+          </NuxtLink>
+          <NuxtLink to="" active-class="text-red-500 font-bold" class="font-medium text-md">
+            Pricing
+          </NuxtLink>
+          <NuxtLink to="blog" class="text-md font-medium">
+            Blog
+          </NuxtLink>
+        </div>
       </div>
       <!--Buttons-->
       <div class="flex flex-row space-x-2">
