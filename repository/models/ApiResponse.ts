@@ -116,6 +116,7 @@ export interface IOrder {
     branchId: string
     kitchenNote: string
     tableNumber: number
+    serviceType: string
     orderItems: IOrderItems[]
 }
 
